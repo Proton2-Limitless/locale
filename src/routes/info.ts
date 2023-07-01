@@ -4,6 +4,6 @@ import { searchedPlace } from "../controllers/info";
 
 const router = express.Router();
 
-router.get("/region", requireAuth, searchedPlace);
+router.get("/query", requireAuth, searchedPlace);
 
 export { router as searchRouter };

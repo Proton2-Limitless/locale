@@ -6,6 +6,9 @@ import { userRouter } from "./routes/user";
 import { errorHandler, NotFoundError, currentUser } from "@habeebllahmmj/common";
 import dotenv from "dotenv";
 import { searchRouter } from "./routes/info";
+// import cors from "cors";
+// import swaggerUI from "swagger-ui-express";
+const docs = require('./docs');
 
 dotenv.config();
 // Create Express app
@@ -23,6 +26,7 @@ app.use(
 );
 
 
+// app.use('/api-docs',swaggerUI.serve,swaggerUI.setup(docs));
 app.use("/api",userRouter);
 
 app.use(currentUser);
