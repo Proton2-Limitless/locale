@@ -1,0 +1,510 @@
+openapi: 3.1.0
+info:
+  title: locale
+  version: 1.0.0
+  description: This is the documentation for the locale api
+  contact:
+    name: locale
+    url: www.locale.com
+    email: habeebllah77@gmail.com
+servers:
+  - url: 'http://localhost:3000'
+    description: locale
+tags:
+  - name: user
+  - name: query
+paths:
+  /api/users/signup:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-api-users-signup
+    post:
+      summary: ''
+      operationId: post-api-users-signup
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  email:
+                    type: string
+                    x-stoplight:
+                      id: of5xegcyn01xr
+                  id:
+                    type: string
+                    x-stoplight:
+                      id: 1skk30tlt6kzq
+                  token:
+                    type: string
+                    x-stoplight:
+                      id: 79ncqep60x8jc
+              examples:
+                Example 1:
+                  value:
+                    email: test@test.com
+                    id: string
+                    token: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: array
+                    x-stoplight:
+                      id: 53v4c1m10yne9
+                    items:
+                      x-stoplight:
+                        id: u69ew2brmq5iu
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                          x-stoplight:
+                            id: lrhtqwmk0qseo
+              examples:
+                Example 1:
+                  value:
+                    error:
+                      - 'message:"invalid credential"': null
+            application/xml:
+              schema:
+                type: object
+                properties: {}
+            multipart/form-data:
+              schema:
+                type: array
+                items:
+                  x-stoplight:
+                    id: gdbrdzlusxwvw
+                  type: object
+                  properties:
+                    error:
+                      type: string
+                      x-stoplight:
+                        id: d75flj0e1h9wt
+              examples:
+                Example 1:
+                  value:
+                    - error: string
+      description: ''
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  x-stoplight:
+                    id: ziaqz6y2d5zx6
+                password:
+                  type: string
+                  x-stoplight:
+                    id: s6gigxozo7a68
+            examples:
+              Example 1:
+                value:
+                  email: test@gmail.com
+                  password: string
+  /api/users/login:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-api-users-login
+      description: ''
+    post:
+      summary: ''
+      operationId: post-api-users-login
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  email:
+                    type: string
+                    x-stoplight:
+                      id: 1wz2z7eghtfad
+                  id:
+                    type: string
+                    x-stoplight:
+                      id: ewwfspp3tno9q
+              examples:
+                Example 1:
+                  value:
+                    email: test@test.com
+                    id: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    x-stoplight:
+                      id: cms4as5d8sjmh
+                    type: array
+                    items:
+                      x-stoplight:
+                        id: 6xq93pj1qd5j6
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                          x-stoplight:
+                            id: xcn4uwgcswjth
+              examples:
+                Example 1:
+                  value:
+                    error:
+                      - 'message:"invalid credential"': null
+                Example 2:
+                  value:
+                    id: string
+                    email: test@gmail.com
+                    password: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  x-stoplight:
+                    id: nr2xb07bl6c6i
+                password:
+                  type: string
+                  x-stoplight:
+                    id: 9uoneteq3v9v4
+                '':
+                  type: string
+                  x-stoplight:
+                    id: xbk1b2wote7dc
+            examples:
+              Example 1:
+                value:
+                  email: test@test.com
+                  password: string
+  /api/query for region:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    x-stoplight:
+                      id: bidstfo5swwwr
+                    items:
+                      x-stoplight:
+                        id: 2awgyj5nj0qfj
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                          x-stoplight:
+                            id: 8lbon6dzpcg8n
+                        created:
+                          type: string
+                          x-stoplight:
+                            id: joi0af9pzaetc
+                        region:
+                          type: string
+                          x-stoplight:
+                            id: jlpbw1w21ydni
+                        history:
+                          type: string
+                          x-stoplight:
+                            id: s863dbvghwnoc
+                        id:
+                          type: string
+                          x-stoplight:
+                            id: fpyxivue30az8
+              examples:
+                Example 1:
+                  value:
+                    data:
+                      - name: Abia
+                        created: 27 August 1991
+                        region: South East
+                        history: Abia State was carved out of Imo State in 1991.
+                        id: 649c4d859008d9e8dceb516d
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/badrequest'
+              examples:
+                Example 1:
+                  value:
+                    error:
+                      - message: bad request
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/badrequest'
+      operationId: get-api-region
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: tag
+          description: region
+        - schema:
+            type: string
+          in: query
+          name: name
+          description: region name
+    parameters: []
+  /api/query for state:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    x-stoplight:
+                      id: l1wmfe834dbly
+                    items:
+                      x-stoplight:
+                        id: tkakhz38x93ej
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                          x-stoplight:
+                            id: w5zb4roolclfv
+                        created:
+                          type: string
+                          x-stoplight:
+                            id: every6hzrddi7
+                        region:
+                          type: string
+                          x-stoplight:
+                            id: jpg2ze1hak45m
+                        history:
+                          type: string
+                          x-stoplight:
+                            id: sa86smex47c7y
+                        lg:
+                          $ref: '#/components/schemas/lg'
+                          x-stoplight:
+                            id: ax7pk51p4tj3n
+              examples:
+                Example 1:
+                  value:
+                    data:
+                      - name: string
+                        created: string
+                        region: string
+                        history: string
+                        lg:
+                          - name: string
+                            created: string
+                            history: string
+                            state: string
+                            id: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/badrequest'
+              examples:
+                Example 1:
+                  value:
+                    error:
+                      - message: error message
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/badrequest'
+      operationId: get-api-get
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: tag
+          description: state
+        - schema:
+            type: string
+          in: query
+          name: name
+          description: state name
+    parameters: []
+  /api/query for lg:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/lg'
+                    x-stoplight:
+                      id: 664miotph7zej
+              examples:
+                Example 1:
+                  value:
+                    data:
+                      - name: string
+                        created: string
+                        history: string
+                        state: string
+                        id: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/badrequest'
+              examples:
+                Example 1:
+                  value:
+                    error:
+                      - message: error message
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/badrequest'
+              examples:
+                Example 1:
+                  value:
+                    error:
+                      - message: error message
+      operationId: get-api-query-for-lg
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: tag
+          description: lg
+        - schema:
+            type: string
+          in: query
+          name: name
+          description: lg name
+components:
+  schemas:
+    user:
+      title: user
+      x-stoplight:
+        id: nhafkc7hjanhd
+      type: object
+      properties:
+        id:
+          type: string
+          x-stoplight:
+            id: 2t4sc6n9wl71l
+        email:
+          type: string
+          x-stoplight:
+            id: t3gf5xrztzn7u
+        password:
+          type: string
+          x-stoplight:
+            id: gksq150m7z0q7
+      x-internal: true
+      examples:
+        - id: string
+          email: test@gmail.com
+          password: string
+      description: ''
+    badrequest:
+      title: badrequest
+      x-stoplight:
+        id: 4cr8hrvglxa6g
+      type: object
+      properties:
+        error:
+          type: array
+          x-stoplight:
+            id: k6mzzns8wpy7u
+          items:
+            x-stoplight:
+              id: 27bh9h65txguy
+            type: object
+            properties:
+              message:
+                type: string
+                x-stoplight:
+                  id: g0g1pi9lsr93n
+      examples:
+        - error:
+            - message: error message
+    lg:
+      title: lg
+      x-stoplight:
+        id: dmezv964jzsbe
+      type: array
+      examples:
+        - lg:
+            - name: string
+              created: string
+              history: string
+              state: string
+              id: string
+      items:
+        x-stoplight:
+          id: npsj6yoecry7q
+        type: object
+        properties:
+          name:
+            type: string
+            x-stoplight:
+              id: j106c163yl6sa
+          created:
+            type: string
+            x-stoplight:
+              id: fldri43ihndlu
+          history:
+            type: string
+            x-stoplight:
+              id: 13hh8spueb6rx
+          state:
+            type: string
+            x-stoplight:
+              id: 2c39q0wsmgow3
+          id:
+            type: string
+            x-stoplight:
+              id: ptnjjgjxwzqzx
+x-internal: false
