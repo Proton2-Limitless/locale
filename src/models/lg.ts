@@ -1,10 +1,11 @@
 import mongoose from "mongoose";
 
-// export interface lgRegionAttrs {
-//   name: string;
-//   created: string;
-//   description: string;
-// }
+export interface lgRegionAttrs {
+  name: string;
+  created: string;
+  history: string;
+  state: string;
+}
 
 // An interface that describes the properties that a User Document has
 export interface lgDoc extends mongoose.Document {
@@ -16,6 +17,7 @@ export interface lgDoc extends mongoose.Document {
 
 // An interface that describes the properties that a User Model has
 export interface LgModel extends mongoose.Model<lgDoc> {
+  build(attrs: lgRegionAttrs): lgDoc;
 }
 
 const lgSchema = new mongoose.Schema(
@@ -33,9 +35,9 @@ const lgSchema = new mongoose.Schema(
       required: true,
     },
     state: {
-        type: String,
-        required: true,
-    }
+      type: String,
+      required: true,
+    },
   },
   {
     toJSON: {
@@ -48,9 +50,9 @@ const lgSchema = new mongoose.Schema(
   }
 );
 
-// lgSchema.statics.build = (attrs: lgRegionAttrs) => {
-//   return new Lg(attrs);
-// };
+lgSchema.statics.build = (attrs: lgRegionAttrs) => {
+  return new Lg(attrs);
+};
 
 const Lg = mongoose.model<lgDoc, LgModel>("Lg", lgSchema);
 

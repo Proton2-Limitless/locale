@@ -5,6 +5,7 @@ const cache = new InternalCache();
 import { response } from "../util/helper";
 
 export const searchedPlace = async (req: Request, res: Response) => {
+  cache.clear();
   const { tag, name } = req.query;
   if (!name || !tag) {
     throw new BadRequestError(

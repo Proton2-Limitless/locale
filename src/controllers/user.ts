@@ -38,7 +38,7 @@ export const loginUser = async (req: Request, res: Response) => {
   );
 
   req.session.jwt = userJwt;
-  res.status(201).send(existingUser);
+  res.status(200).send(existingUser);
 };
 
 export const signupUser = async (req: Request, res: Response) => {
