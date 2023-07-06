@@ -7,10 +7,17 @@ import { errorHandler, NotFoundError, currentUser } from "@habeebllahmmj/common"
 import dotenv from "dotenv";
 import { searchRouter } from "./routes/info";
 import cors from "cors";
+import swaggerUi from "swagger-ui-express";
+import YAML from "js-yaml";
+
+// const yamlpath = require("path").join(__dirname, "../docs/locale.yaml");
+const swaggerDocument = YAML.load("../docs/locale.yaml");
 
 dotenv.config();
 // Create Express app
 export const app = express();
+
+app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocument!));
 app.use(express.json());
 
 app.use(cookieParser());
