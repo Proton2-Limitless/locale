@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node src/index.ts",
-    "start": "npm run build && node src/index.js",
+    "dev": "ts-node-dev src/index.ts",
+    "start": "npm run build && node src/dist/index.js",
     "build": "tsc",
     "test": "jest --watchAll --no-cache"
   },
