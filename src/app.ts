@@ -19,7 +19,6 @@ dotenv.config();
 // Create Express app
 export const app = express();
 
-app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(express.json());
 
 app.use(cookieParser());
@@ -30,15 +29,16 @@ app.use(
     resave: false,
     saveUninitialized: false,
   })
-);
-
-app.use(cors());
-// setupSwagger(app);
-app.use("/api", userRouter);
-
-app.use(currentUser);
-app.use("/api", searchRouter);
-
+  );
+  
+  app.use(cors());
+  // setupSwagger(app);
+  app.get("/", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+  app.use("/api", userRouter);
+  
+  app.use(currentUser);
+  app.use("/api", searchRouter);
+  
 app.use("*", (req, res, next) => {
   throw new NotFoundError("Route not found");
 });

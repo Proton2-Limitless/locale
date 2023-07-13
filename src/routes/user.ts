@@ -6,7 +6,7 @@ import { loginUser, logoutUser, signupUser } from "../controllers/user";
 const router = express.Router();
 
 router.post(
-  "/users/signup ",
+  "/users/signup",
   [
     body("email").isEmail().withMessage("Email must be valid"),
     body("password")
