@@ -1,0 +1,216 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a sample locale api server.",
+    "version": "1.0.0",
+    "title": "Locale API",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "locale",
+      "description": "Locale management"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/users/signup": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "Create a new user",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "User that we want to create",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "User created successfully",
+            "examples": {
+              "application/json": {
+                "email": "test@test.com",
+                "token": "wegbdjhdkf",
+                "id": "qwedfghjkl"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "examples": {
+              "application/json": {
+                "message": "invalid credential"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/login": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "Login a user",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "User that want to login",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User logged in successfully",
+            "examples": {
+              "application/json": {
+                "email": "test@test.com",
+                "password": "wegbdjhdkf"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "examples": {
+              "application/json": {
+                "message": "invalid credential"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/logout": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "Logout a user",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "User that want to logout",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User logged out successfully",
+            "examples": {
+              "application/json": {
+                "message": "User logged out successfully"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/query":{
+        "get":{
+            "tags":["Query"],
+            "summary":"Query a locale",
+            "parameters":[
+                {
+                    "name":"locale",
+                    "in":"body",
+                    "description":"Locale that we want to query",
+                    "required":true,
+                    "schema":{
+                        "$ref":"#/definitions/locale"
+                    }
+                }
+            ],
+            "responses":{
+                "200":{
+                    "description":"Locale queried successfully",
+                    "examples":{
+                        "application/json":{
+                            "name":"test",
+                            "created":"2018-01-01",
+                            "history":"2018-01-01",
+                            "state":"test"
+                        }
+                    }
+                },
+                "400":{
+                    "description":"Bad request",
+                    "examples":{
+                        "application/json":{
+                            "message":"invalid credential"
+                        }
+                    }
+                }
+            }
+        }
+    }
+  },
+  "definitions": {
+    "id": {
+      "properties": {
+        "uuid": {
+          "type": "string"
+        }
+      }
+    },
+    "lg": {
+      "type": "array",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "created": {
+          "type": "string"
+        },
+        "history": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        }
+      }
+    },
+    "state": {
+      "type": "array",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "created": {
+          "type": "string"
+        },
+        "history": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string"
+        }
+      }
+    },
+    "user": {
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
